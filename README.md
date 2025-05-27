@@ -31,13 +31,16 @@ If you have any questions or need clarification during the assessment, leave a c
 - The policies are stored as Markdown files in `backend/policies/`. The project structure is as follows:
 
 ```
+.gitignore
+README.md
 /frontend/ # React w/ TypeScript (Vite-based) frontend
 /backend/ # Python Flask backend
 ├── app.py
 ├── policies/
 │ ├── refund.md
 │ └── return.md
-└── requirements.txt
+├── requirements.txt
+└── .env.example
 ```
 
 - If you're ready, you may begin each of the following tasks **one-by-one**. _Good luck to you!_
