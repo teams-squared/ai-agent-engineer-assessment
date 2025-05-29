@@ -44,3 +44,5 @@ htmlcov/
 # --- OS Specific ---
 Thumbs.db
 desktop.ini
+
+vectorstore/
