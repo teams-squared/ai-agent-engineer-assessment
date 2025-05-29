@@ -30,10 +30,18 @@ def chat_with_data(question: str) -> LLMAnswer:
     Returns:
         LLMAnswer: The generated answer.
     """
+    vectorstore = Connectors.get_vectorstore_client()
+    retriever = vectorstore.as_retriever()
+    context_docs = retriever.invoke(question)
+
+    context = ""
+    for doc in context_docs:
+        context += doc.page_content + '\n'
+
     result = structured_llm.invoke(
         prompt_template.format(
             question= question,
-            context = Connectors.context
+            context = context
         )
     )
     
