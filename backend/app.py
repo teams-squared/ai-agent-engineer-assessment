@@ -2,6 +2,7 @@
 # --------------------------------------------------------------------------------------------------------------------
 
 from flask import Flask, request, jsonify
+from src.document_processing import load_and_split_documents
 
 app = Flask(__name__)
 
@@ -14,15 +15,9 @@ def query_policy():
         return jsonify({"error": "Missing 'question' field"}), 400
 
     try:
-        parsed = {
-                    "summary": "Refunds for digital products are not allowed once the license is activated.",
-                    "bullets": [
-                        "Refund requests must be made within 14 days.",
-                        "Product must be unused and license unactivated.",
-                        "Partial refunds are possible after 14 days."
-                    ]
-                }
-        return jsonify(parsed)
+        splitted_docs = load_and_split_documents()
+        print(splitted_docs)
+        return jsonify({"Message": "splitting completed"})
     except Exception as e:
         return jsonify({
             "summary": "Error processing query",
