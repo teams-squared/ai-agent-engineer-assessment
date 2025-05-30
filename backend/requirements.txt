@@ -6,3 +6,4 @@ langchain_openai
 unstructured
 markdown
 faiss-cpu
+pydantic
