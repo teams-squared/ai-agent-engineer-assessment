@@ -7,3 +7,4 @@ unstructured
 markdown
 faiss-cpu
 pydantic
+flask_cors

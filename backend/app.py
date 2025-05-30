@@ -6,12 +6,13 @@ import os
 from dotenv import load_dotenv
 from src.vectore_store_processing import get_vector_store
 from src.query_processing import generate_response, parse_response
+from flask_cors import CORS
 
 load_dotenv()
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
 
 app = Flask(__name__)
-
+CORS(app, origins=["http://localhost:5173"])
 
 vectorstore = get_vector_store(OPENAI_API_KEY)
 retriever = vectorstore.as_retriever(search_kwargs={"k": 5})
