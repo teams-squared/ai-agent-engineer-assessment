@@ -1,0 +1,10 @@
+flask
+langchain
+langchain-community
+python-dotenv
+langchain_openai
+unstructured
+markdown
+faiss-cpu
+pydantic
+flask_cors
