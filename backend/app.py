@@ -2,7 +2,13 @@
 # --------------------------------------------------------------------------------------------------------------------
 
 from flask import Flask, request, jsonify
+import os
+from dotenv import load_dotenv
 from src.document_processing import load_and_split_documents
+from src.vectore_store_processing import get_vector_store
+
+load_dotenv()
+OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
 
 app = Flask(__name__)
 
@@ -17,7 +23,8 @@ def query_policy():
     try:
         splitted_docs = load_and_split_documents()
         print(splitted_docs)
-        return jsonify({"Message": "splitting completed"})
+        vectorstore = get_vector_store(OPENAI_API_KEY)
+        return jsonify({"Message": "vector store created"})
     except Exception as e:
         return jsonify({
             "summary": "Error processing query",

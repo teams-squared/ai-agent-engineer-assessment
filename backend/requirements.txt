@@ -5,3 +5,4 @@ python-dotenv
 langchain_openai
 unstructured
 markdown
+faiss-cpu
